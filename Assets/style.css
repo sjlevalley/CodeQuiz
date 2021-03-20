@@ -1,5 +1,7 @@
 
-header {
+
+
+.header {
     border: 2px solid black;
 }
 
@@ -7,10 +9,38 @@ header div {
     border: 1px solid gray;
 }
 
-main {
-    border: 2px solid black;
+
+
+.startPage {
+    border: 1px solid gray;
+    
+    
 }
 
-.large-font {
+.startPageHeader {
     border: 1px solid gray;
 }
+
+.startPageInstructions {
+    border: 1px solid gray;
+}
+
+.startQuiz {
+    border: 1px solid gray;
+}
+
+.quizPage {
+    border: 1px solid black;
+    
+    
+}
+
+.correctIncorrectBox {
+    border: 1px solid black;
+}
+
+
+.quizEndButtons {
+    display: none;
+}
+

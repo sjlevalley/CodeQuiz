@@ -10,7 +10,7 @@
 
 <!-- #################### Container for Header ####################### -->
 
-    <header>
+    <header class="header">
       <div> 
           <button class="viewHighScores">View High Scores</button>
       </div>
@@ -19,7 +19,7 @@
       <!-- <button class="start-button">Start</button> -->
       <div class= "cardTimer">
         <div class = "timerText">
-            <h3>Seconds Remaining: <span class="secRemain">75</span></h3>
+            <h3>Seconds Remaining: <span class="secRemain"></span></h3>
       </div>
     </header>
 
@@ -28,19 +28,69 @@
 
     <main>
 
-    
-      <section>
-        <div class="quizMainBox">
-          <h2 class="large-font word-blanks">Code Quiz Challenge</h2>
+      <section class="startPage">
+        
+        <!-- ############## Start Page Header ################ -->
+        
+        <div class="startPageHeader">
+          <h2>Code Quiz Challenge</h2>
         </div>
-        <div class="mainWordDisplay questionBox">
+
+        <!-- ############## Quiz Box TEXT ################ -->
+
+        <div class="startPageInstructions">
             Coding Quiz Challenge instructions
         </div>
+        
+        <!-- ############## Start Quiz Button ################ -->
         <div>
-            <button class="startQuiz">Start Quiz</button>
+          <button class="startQuizButton">Start Quiz</button>
         </div>
-        <div class="CorrectIncorrectbox">
-            Correct!/Incorrect!
+
+      </section>
+
+      <!-- #################### Question Page ###################### -->
+      <br>
+      <br>
+      <br>
+      <section class="quizPage"> 
+
+        <div>
+          <span class="question">How are you today?</span>
+        </div>
+
+        <br> 
+
+        <div class="answerList">
+          <div class ="answer">
+            <span>Good</span>
+          </div>
+          <div class ="answer">
+            <span>Bad</span>
+          </div>
+          <div class ="answer">
+            <span>Ugly</span>
+          </div>
+          <div class ="answer">
+            <span>Swell</span>
+          </div>
+          <div class="correctIncorrectBox">
+            <span class="correct">Correct!</span>
+            <span class="incorrect">Incorrect!</span>
+          </div>
+
+        </div>
+        
+        <br>
+        
+        <!-- ############## Quiz Box Footer ################ -->
+        <div class="correctIncorrectBox">
+            <span class="correct">Correct!</span>
+            <span class="incorrect">Incorrect!</span>
+        </div>
+        <div class="quizEndButtons">
+          <button class="takeQuizAgain">Take Quiz Again</button>
+          <button class="clearHighScores">Clear High Scores</button>
         </div>
 
       </section>
