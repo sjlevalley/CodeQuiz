@@ -13,6 +13,7 @@ header div {
 
 .startPage {
     border: 1px solid gray;
+    display: block;
     
     
 }
@@ -31,12 +32,21 @@ header div {
 
 .quizPage {
     border: 1px solid black;
-    
-    
+    /* display: none; */
 }
 
-.correctIncorrectBox {
+.allDonePage {
+    display: none;
+}
+
+.correct {
     border: 1px solid black;
+    display: none;
+}
+
+.incorrect {
+    border: 1px solid black;
+    display: none;
 }
 
 
