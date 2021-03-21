@@ -6,12 +6,14 @@ var quizPage = document.querySelector(".quizPage");
 var pageHeader = document.querySelector(".pageHeader");
 var correct = document.querySelector(".correct");
 var incorrect = document.querySelector(".incorrect");
+var Radio = document.querySelector(".Radio");
+var but1= document.querySelector(".but1");
 
 
 var secRemain = document.querySelector(".secRemain");
 var question = document.querySelector(".question");
 var answerList = document.querySelector(".answerList");
-var answer = document.querySelector(".answer");
+var answers = document.getElementsByClassName("Radio");
 var correctIncorrectBox = document.querySelector(".correctIncorrectBox");
 
 var correct = document.querySelector(".correct");
@@ -29,7 +31,15 @@ var answer2 = document.querySelector(".B");
 var answer3 = document.querySelector(".C");
 var answer4 = document.querySelector(".D");
 
+var rb1 = document.getElementById("rb1").textContent;
+var rb2 = document.getElementById("rb2");
+var rb3 = document.getElementById("rb3");
+var rb4 = document.getElementById("rb4");
 
+var rb11 = document.getElementById("rb11");
+var rb11 = document.getElementById("rb11");
+var rb11 = document.getElementById("rb11");
+var rb11 = document.getElementById("rb11");
 
 
 var questionBank = [
@@ -72,37 +82,74 @@ var currentQuestion = 0;
 function printQuestion () {
   var Q = questionBank[currentQuestion];
   question.textContent = Q.question;
-  answer1.textContent = Q.answer1;
-  answer2.textContent = Q.answer2;
-  answer3.textContent = Q.answer3;
-  answer4.textContent = Q.answer4;
-  
-}
+  answer1.value = Q.answer1;
+  rb11.textContent = Q.answer1; 
+  answer2.value= Q.answer2;
+  rb22.textContent = Q.answer2
+  answer3.value = Q.answer3;
+  rb33.textContent = Q.answer3
+  answer4.value = Q.answer4;
+  rb44.textContent = Q.answer4
 
+}
 printQuestion();
 
+console.log(answers);
+
+var correctAnswer = (questionBank[currentQuestion].correctA);
+console.log(correctAnswer);
+
+function checkAns(x) {
+  x = showSelected();
+  if (x == correctAnswer) {
+    console.log("CORRECT!!!!!!!!!");
+  }
+}
+
+
+function showSelected () {
+  for (i = 0; i < answers.length; i++) {
+    if (answers[i].checked == true) {
+      console.log(answers[i].value);
+      checkAns();
+    };
+}};
 
 
 
-  // var buttons = document.querySelectorAll('button[name="questions"]');
+
+
   
-  function checkAns () {
-    var buttons = document.querySelectorAll('button[name="questions"]'); 
 
-    var list = document.getElementsByName("questions"); //Client ID of the radiolist
-    var inputs = list.getElementsByTagName("input");
-    var selected;
-    for (var i = 0; i < inputs.length; i++) {
-         if (inputs[i].checked) {
-             selected = inputs[i];
-             break;
-          }
-     }
-     if (selected) {
-          alert(selected.value);
-     }
+answerList.addEventListener("click", showSelected);
 
 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// //  for (i = 0; i < answers.length; i++) {
+// //    console.log(answers[i].value);
+// //  }
+
+
+ 
 
 
 
