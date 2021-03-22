@@ -14,8 +14,6 @@ header div {
 .startPage {
     border: 1px solid gray;
     display: block;
-    
-    
 }
 
 .startPageHeader {
@@ -30,7 +28,7 @@ header div {
     border: 1px solid gray;
 }
 
-.quizPage {
+.quizMain {
     border: 1px solid black;
     /* display: none; */
 }

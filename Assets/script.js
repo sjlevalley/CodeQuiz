@@ -2,7 +2,7 @@
 var header = document.querySelector(".header");
 var startPage = document.querySelector(".startPage");
 var startQuizButton = document.querySelector(".startQuizButton");
-var quizPage = document.querySelector(".quizPage");
+var quizMain = document.querySelector(".quizMain");
 var pageHeader = document.querySelector(".pageHeader");
 var correct = document.querySelector(".correct");
 var incorrect = document.querySelector(".incorrect");
@@ -11,9 +11,7 @@ var but1= document.querySelector(".but1");
 
 
 var secRemain = document.querySelector(".secRemain");
-var question = document.querySelector(".question");
-var answerList = document.getElementsByName("answer");
-var answers = document.getElementsByClassName("Radio");
+
 var correctIncorrectBox = document.querySelector(".correctIncorrectBox");
 
 var correct = document.querySelector(".correct");
@@ -26,20 +24,7 @@ var hasWon = false;
 var finalScoreCount = document.querySelector(".finalScoreCount");
 var userInitials = document.querySelector(".userInitials");
 
-var answer1 = document.querySelector(".A");
-var answer2 = document.querySelector(".B");
-var answer3 = document.querySelector(".C");
-var answer4 = document.querySelector(".D");
 
-var rb1 = document.getElementById("rb1").textContent;
-var rb2 = document.getElementById("rb2");
-var rb3 = document.getElementById("rb3");
-var rb4 = document.getElementById("rb4");
-
-var rb11 = document.getElementById("rb11");
-var rb11 = document.getElementById("rb11");
-var rb11 = document.getElementById("rb11");
-var rb11 = document.getElementById("rb11");
 
 
 var questionBank = [
@@ -74,61 +59,46 @@ var questionBank = [
           }
 ];
 
-var count = 0;
 var currentQuestion = 0;
-var answerArr = Array.from(answerList);
 
-
+var Question = document.querySelector(".Question");
+var option1 = document.querySelector(".but1");
+var option2 = document.querySelector(".but2");
+var option3 = document.querySelector(".but3");
+var option4 = document.querySelector(".but4");
 
 function printQuestion () {
   var Q = questionBank[currentQuestion];
-  question.textContent = Q.question;
-  answer1.value = Q.answer1;
-  rb11.textContent = Q.answer1; 
-  answer2.value= Q.answer2;
-  rb22.textContent = Q.answer2
-  answer3.value = Q.answer3;
-  rb33.textContent = Q.answer3
-  answer4.value = Q.answer4;
-  rb44.textContent = Q.answer4
-
+  Question.textContent = Q.question;
+  option1.textContent = Q.answer1;
+  option2.textContent = Q.answer2;
+  option3.textContent = Q.answer3;
+  option4.textContent = Q.answer4;
 }
 printQuestion();
 
+var button = document.getElementsByName("button");
 
-console.log(answerArr);
-function checkAnswer () {
-  for (i = 0; i < answerArr.length; i++) {
-    console.log(answerArr[i].checked);
-    console.log(questionBank[currentQuestion].correctA);
-    if (answers[i].checked === questionBank[currentQuestion].correctA) {
+console.log(button);
+
+function checkAns () {
+  button.onclick 
+    if (option1.textContent === questionBank[currentQuestion].correctA) {
       console.log("Correct!");
-      return;
-    } else {
-      console.log("WRONG!!")
-      return;
-    }}
-}
-
-// var correctAnswer = (questionBank[currentQuestion].correctA);
-
-// function checkAns() {
-//   if (showSelected())
-// }
+    }
+  }
 
 
 
-answerArr.addEventListener("click", checkAnswer)
+  option1.addEventListener("click", checkAns);
 
 
 
 
-    // if (answers[i].value === questionBank[currentQuestion].correctA) 
-    //   console.log(answers[i].value);
-    // } else {
-    //   console.log("WRONG!")
 
-    
+
+
+
 
 
 
@@ -136,8 +106,8 @@ answerArr.addEventListener("click", checkAnswer)
 // ########### Removes Start Page, Displays Quiz, Hides Start Quiz Button ############
 function displayQuiz() {
   startPage.setAttribute("style", "display: none;");
-  quizPage.setAttribute("style", "display: block;");
-  startQuizButton.setAttribute("style", "display: none;");
+  // quizPage.setAttribute("style", "display: block;");
+  startQuizButton.setAttribute("style", "visibility: hidden;");
 }
 
 
@@ -157,5 +127,7 @@ function setTime(hasWon) {
 
 // ############# When Start Button Clicked ##############
 startQuizButton.addEventListener("click", setTime);
+startQuizButton.addEventListener("click", displayQuiz);
+
 // startQuizButton.addEventListener("click", displayQuiz);
 
