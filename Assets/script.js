@@ -81,17 +81,50 @@ var button = document.getElementsByName("button");
 
 console.log(button);
 
-function checkAns () {
-  button.onclick 
+function checkAns1 () {
     if (option1.textContent === questionBank[currentQuestion].correctA) {
-      console.log("Correct!");
-    }
+      window.alert("Correct!");
+    } else {
+      console.log("WRONG!");
+    };
+    nextQuestion();
+  }
+function checkAns2 () {
+    if (option2.textContent === questionBank[currentQuestion].correctA) {
+      window.alert("Correct!");
+    } else {
+      window.alert("WRONG!");
+    };
+    nextQuestion();
+  }
+function checkAns3 () {
+    if (option3.textContent === questionBank[currentQuestion].correctA) {
+      window.alert("Correct!");
+    } else {
+      window.alert("WRONG!");
+    };
+    nextQuestion();
+  }
+function checkAns4 () {
+    if (option4.textContent !== questionBank[currentQuestion].correctA) {
+      window.alert("Correct!");
+    } else {
+      window.alert("WRONG!");
+    };
+    nextQuestion();
+  }
+
+  function nextQuestion() {
+    currentQuestion = currentQuestion++;
   }
 
 
-
-  option1.addEventListener("click", checkAns);
-
+  option1.addEventListener("click", checkAns1);
+  option2.addEventListener("click", checkAns2);
+  option3.addEventListener("click", checkAns3);
+  option4.addEventListener("click", checkAns4);
+  
+nextQuestion();
 
 
 
