@@ -48,7 +48,7 @@ var questionBank = [
             answer2: "Bad",
             answer3: "Ugly",
             answer4: "Super Ugly",
-            correctA: "Good"
+            correctA: "Bad"
           },{ 
             question: "What is the weather?",
             answer1: "Sunny",
@@ -77,54 +77,51 @@ function printQuestion () {
 }
 printQuestion();
 
+
 var button = document.getElementsByName("button");
+var buttonArr = Array.from(button);
+
 
 console.log(button);
+console.log(buttonArr);
 
-function checkAns1 () {
-    if (option1.textContent === questionBank[currentQuestion].correctA) {
-      window.alert("Correct!");
-    } else {
-      console.log("WRONG!");
-    };
-    nextQuestion();
-  }
-function checkAns2 () {
-    if (option2.textContent === questionBank[currentQuestion].correctA) {
-      window.alert("Correct!");
-    } else {
-      window.alert("WRONG!");
-    };
-    nextQuestion();
-  }
-function checkAns3 () {
-    if (option3.textContent === questionBank[currentQuestion].correctA) {
-      window.alert("Correct!");
-    } else {
-      window.alert("WRONG!");
-    };
-    nextQuestion();
-  }
-function checkAns4 () {
-    if (option4.textContent !== questionBank[currentQuestion].correctA) {
-      window.alert("Correct!");
-    } else {
-      window.alert("WRONG!");
-    };
-    nextQuestion();
-  }
+console.log(questionBank[currentQuestion].correctA);
+console.log(buttonArr.length);
 
-  function nextQuestion() {
-    currentQuestion = currentQuestion++;
-  }
+function checkAns () {
+    for (i=0; i<buttonArr.length; i++) {
+      console.log(buttonArr[i].textContent);
+      console.log(questionBank[currentQuestion].correctA);
+      if (buttonArr[i].textContent == questionBank[currentQuestion].correctA) {
+        window.alert("Correct!!!");
+        currentQuestion++;
+        printQuestion();
+        return;
+      } else {
+        window.alert("WRONG!!!");
+        currentQuestion++;
+        printQuestion();
+        return;
+      }
+    }
+
+    }
 
 
-  option1.addEventListener("click", checkAns1);
-  option2.addEventListener("click", checkAns2);
-  option3.addEventListener("click", checkAns3);
-  option4.addEventListener("click", checkAns4);
+
+
+
+ 
+
+
+  buttonArr.forEach(function(button){
+    button.addEventListener("click", checkAns);
+  })
+
+ 
+ 
   
-nextQuestion();
+
 
 
 
