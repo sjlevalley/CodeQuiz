@@ -12,7 +12,7 @@ var but1= document.querySelector(".but1");
 
 var secRemain = document.querySelector(".secRemain");
 var question = document.querySelector(".question");
-var answerList = document.querySelector(".answerList");
+var answerList = document.getElementsByName("answer");
 var answers = document.getElementsByClassName("Radio");
 var correctIncorrectBox = document.querySelector(".correctIncorrectBox");
 
@@ -76,6 +76,7 @@ var questionBank = [
 
 var count = 0;
 var currentQuestion = 0;
+var answerArr = Array.from(answerList);
 
 
 
@@ -94,68 +95,40 @@ function printQuestion () {
 }
 printQuestion();
 
-console.log(answers);
 
-var correctAnswer = (questionBank[currentQuestion].correctA);
-console.log(correctAnswer);
-
-function checkAns(x) {
-  x = showSelected();
-  if (x == correctAnswer) {
-    console.log("CORRECT!!!!!!!!!");
-  }
+console.log(answerArr);
+function checkAnswer () {
+  for (i = 0; i < answerArr.length; i++) {
+    console.log(answerArr[i].checked);
+    console.log(questionBank[currentQuestion].correctA);
+    if (answers[i].checked === questionBank[currentQuestion].correctA) {
+      console.log("Correct!");
+      return;
+    } else {
+      console.log("WRONG!!")
+      return;
+    }}
 }
 
+// var correctAnswer = (questionBank[currentQuestion].correctA);
 
-function showSelected () {
-  for (i = 0; i < answers.length; i++) {
-    if (answers[i].checked == true) {
-      console.log(answers[i].value);
-      checkAns();
-    };
-}};
+// function checkAns() {
+//   if (showSelected())
+// }
 
 
 
-
-
-  
-
-answerList.addEventListener("click", showSelected);
-
-
- 
+answerArr.addEventListener("click", checkAnswer)
 
 
 
 
+    // if (answers[i].value === questionBank[currentQuestion].correctA) 
+    //   console.log(answers[i].value);
+    // } else {
+    //   console.log("WRONG!")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// //  for (i = 0; i < answers.length; i++) {
-// //    console.log(answers[i].value);
-// //  }
-
-
- 
-
-
-
-
-
-
+    
 
 
 
