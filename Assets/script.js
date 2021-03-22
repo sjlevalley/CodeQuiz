@@ -73,46 +73,46 @@ function printQuestion () {
   option1.textContent = Q.answer1;
   option2.textContent = Q.answer2;
   option3.textContent = Q.answer3;
-  option4.textContent = Q.answer4;
+  option4.textContent = Q.answer4; console.log(option2.textContent);
 }
-printQuestion();
+
+
 
 
 var button = document.getElementsByName("button");
 var buttonArr = Array.from(button);
 
-
-console.log(button);
 console.log(buttonArr);
 
-console.log(questionBank[currentQuestion].correctA);
-console.log(buttonArr.length);
+// printQuestion();
 
-function checkAns () {
-    for (i=0; i<buttonArr.length; i++) {
-      console.log(buttonArr[i].textContent);
-      console.log(questionBank[currentQuestion].correctA);
-      if (buttonArr[i].textContent == questionBank[currentQuestion].correctA) {
+
+
+function checkAns (event) {
+  console.log(event.target);
+    // for (i=0; i<buttonArr.length; i++) {
+    //   console.log(buttonArr[i].textContent);
+      var target = event.target;
+      if (target.textContent === questionBank[currentQuestion].correctA) {
+        console.log(target.textContent);
         window.alert("Correct!!!");
         currentQuestion++;
         printQuestion();
         return;
+
       } else {
+        console.log(target.textContent)
         window.alert("WRONG!!!");
         currentQuestion++;
         printQuestion();
         return;
-      }
-    }
+      };
+    };
 
-    }
-
-
+    // };
 
 
-
- 
-
+    printQuestion();
 
   buttonArr.forEach(function(button){
     button.addEventListener("click", checkAns);
