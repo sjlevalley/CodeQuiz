@@ -20,7 +20,7 @@ var quizEndButtons = document.querySelector(".quizEndButtons");
 var takeQuizAgain = document.querySelector(".takeQuizAgain");
 var clearHighScores = document.querySelector(".clearHighScores");
 
-var hasWon = false;
+var isDone = false;
 var finalScoreCount = document.querySelector(".finalScoreCount");
 var userInitials = document.querySelector(".userInitials");
 
@@ -68,12 +68,18 @@ var option3 = document.querySelector(".but3");
 var option4 = document.querySelector(".but4");
 
 function printQuestion () {
-  var Q = questionBank[currentQuestion];
-  Question.textContent = Q.question;
-  option1.textContent = Q.answer1;
-  option2.textContent = Q.answer2;
-  option3.textContent = Q.answer3;
-  option4.textContent = Q.answer4; console.log(option2.textContent);
+  if (currentQuestion < 4) {
+    var Q = questionBank[currentQuestion];
+    Question.textContent = Q.question;
+    option1.textContent = Q.answer1;
+    option2.textContent = Q.answer2;
+    option3.textContent = Q.answer3;
+    option4.textContent = Q.answer4; 
+  } else {
+    window.alert("That's All the Questions");
+  }
+
+
 }
 
 
@@ -82,27 +88,30 @@ function printQuestion () {
 var button = document.getElementsByName("button");
 var buttonArr = Array.from(button);
 
-console.log(buttonArr);
+// console.log(buttonArr);
 
 // printQuestion();
 
 
 
 function checkAns (event) {
-  console.log(event.target);
+  // console.log(event.target);
     // for (i=0; i<buttonArr.length; i++) {
     //   console.log(buttonArr[i].textContent);
       var target = event.target;
       if (target.textContent === questionBank[currentQuestion].correctA) {
-        console.log(target.textContent);
+        // console.log(target.textContent);
         window.alert("Correct!!!");
         currentQuestion++;
         printQuestion();
         return;
 
       } else {
-        console.log(target.textContent)
-        window.alert("WRONG!!!");
+
+        secLeft -= 15;
+
+
+        // window.alert("WRONG!!!");
         currentQuestion++;
         printQuestion();
         return;
@@ -140,11 +149,11 @@ function displayQuiz() {
   startQuizButton.setAttribute("style", "visibility: hidden;");
 }
 
-
+var secLeft = 75;
 
 // ############## Starts Timer on Button Click #############
-function setTime(hasWon) {
-  var secLeft = 75;
+function setTime(isDone) {
+  // var secLeft = 75;
       var timeInterval = setInterval(function () {
           secLeft--;
         secRemain.textContent = secLeft;
@@ -155,9 +164,10 @@ function setTime(hasWon) {
       }, 1000);}
 
 
+
 // ############# When Start Button Clicked ##############
 startQuizButton.addEventListener("click", setTime);
 startQuizButton.addEventListener("click", displayQuiz);
 
-// startQuizButton.addEventListener("click", displayQuiz);
+
 
