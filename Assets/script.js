@@ -36,8 +36,11 @@ var buttonArr = Array.from(button);
 var allDonePage = document.querySelector(".allDonePage");
 var highScoresPage = document.querySelector(".highScoresPage");
 var hsList = document.querySelector(".hsList");
+var score1 =  document.querySelector(".score1");
 var playAgainButton = document.querySelector(".playAgainButton");
 var submitForm = document.querySelector(".submitForm");
+
+console.log(score1);
 
 
 
@@ -108,7 +111,7 @@ function currentQ() {
   currentQuestion++;
 }
 
-renderLastRegistered();
+
 
 // #################### Checks Answer To See If Correct ############################
 
@@ -148,6 +151,8 @@ function checkAns (event) {
 
   // ##### function to Removes Start Page, Displays Quiz, Hides Start Quiz Button #####
 function displayQuiz() {
+  currentQuestion = 0
+  printQuestion();
   startPage.setAttribute("style", "display: none;");
   quizMain.setAttribute("style", "display: block;");
   startQuizButton.setAttribute("style", "visibility: hidden;");
@@ -218,34 +223,4 @@ function setTime(isDone) {
 
   submitForm.addEventListener("submit", function(event){
     // preventDefault();
-
-    console.log("SUBMIT!");
-
-    var initials = document.querySelector(".userInitials").value;
-    var score = finalScoreCount.textContent;
-  
-    var info = [initials, score];
-      // save email and password in local storage
-    localStorage.setItem("info", info);
-      // localStorage.setItem("initials", initials);
-      // localStorage.setItem("score", score);
   });
-
-
-function renderLastRegistered() {
-  // get email and password from local storage
-  var info = localStorage.getItem("info");
-  // var initials = info[0];
-  // var score = info[1];
-
-  // if email or password is null, stop
-  if (!info) {
-    return;
-  } else {
-  var initials = info[0];
-  var score = info[1];
-    console.log(info);
-  }}
-
-  renderLastRegistered();
-
