@@ -9,19 +9,16 @@ var pageHeader = document.querySelector(".pageHeader");
 
 var secRemain = document.querySelector(".secRemain");
 
-
-
 // var correctIncorrectBox = document.querySelector(".correctIncorrectBox");
 
 
 var quizEndButtons = document.querySelector(".quizEndButtons");
 var takeQuizAgain = document.querySelector(".takeQuizAgain");
-
 var clearHighScores = document.querySelector(".clearHighScores");
-var highScoresButton = document.querySelector(".highScoresButton");
+
 var isDone = false;
 var finalScoreCount = document.querySelector(".finalScoreCount");
-var userInitials = document.querySelector(".userInitials").textContent;
+var userInitials = document.querySelector(".userInitials");
 
 
 var currentQuestion = 0;
@@ -79,39 +76,6 @@ var questionBank = [
 ];
 
 
-users = localStorage.getItem("users");
-
-highScoresButton.addEventListener("click", function (event) {
-  event.preventDefault();
-
-var users = {
-  Initials: userInitials.textContent, Score: finalScoreCount.textContent
-};
-
-localStorage.setItem("users", JSON.stringify(userInitials.textContent),
-JSON.stringify(finalScoreCount.textContent));
-printScores();
-});
-
-function printScores() {
-  // convert JSON string back into a plain javascript object with JSON.parse()
-  var lastScore = JSON.parse(localStorage.getItem("users"));
-  if (lastScore !== null) {
-    document.querySelector(".hs1").textContent =
-      lastGrade.student + " received a/an " + lastGrade.grade;
-
-  }
-};
-
-
-
-// highScoresButton.addEventListener("click", function(event) {
-//   if
-// } )
-
-
-
-
 
 // ################## function to get question & answer set from array #############
 function printQuestion () {
@@ -125,7 +89,7 @@ function printQuestion () {
     option3.textContent = Q.answer3;
     option4.textContent = Q.answer4; 
   } else {
-    window.alert("That's All the Questions");
+    // window.alert("That's All the Questions");
   }
 }
 
@@ -149,23 +113,25 @@ function currentQ() {
 // #################### Checks Answer To See If Correct ############################
 
 function checkAns (event) {
-  // console.log(event.target);
-    // for (i=0; i<buttonArr.length; i++) {
-    //   console.log(buttonArr[i].textContent);
+      
+      secLeft = secRemain.textContent - 15;
       var target = event.target;
       if (target.textContent === questionBank[currentQuestion].correctA) {
         // console.log(target.textContent);
-        correct.setAttribute("style", "display: block;");
+        dispCorrect();
         setTimeout(function(){
           currentQ();}, 1000);
         setTimeout(function(){
+          secLeft-= 15;
           printQuestion();}, 1000);
         return;
       } else {
-        secLeft -= 15;
-        incorrect.setAttribute("style", "display: block;");
+        console.log("INCORRECT");
+        dispIncorrect();
+        secLeft-= 15;
         setTimeout(function(){
           currentQ();}, 1000);
+
         setTimeout(function(){
           printQuestion();}, 1000);
         return;
@@ -192,17 +158,23 @@ function displayQuiz() {
 function allDone() {
   allDonePage.setAttribute("style", "display: block;");
   quizMain.setAttribute("style", "display: none;");
+  finalScoreCount.textContent = secRemain.textContent;
   console.log("HeyHey");
-
 }
 
-function highScores(event) { 
+function highScores(event) {
   console.log("HelloHelloHelloHello");
   event.preventDefault();
   highScoresPage.setAttribute("style", "display: block;");
   allDonePage.setAttribute("style", "display: none;");
   return;
 };
+
+
+  // highScoresPage.setAttribute("style", "display: block;");
+  // allDonePage.setAttribute("style", "display: none;");
+  // return;
+
 
 function reStart(event) {
   startPage.setAttribute("style", "display: block;");
@@ -227,7 +199,6 @@ function setTime(isDone) {
         secRemain.textContent = secLeft;
         if(secLeft === 0 || currentQuestion > 3) {
           clearInterval(timeInterval);
-          finalScoreCount.textContent = secLeft;
           allDone();
           // highScores();
         } 
@@ -237,6 +208,3 @@ function setTime(isDone) {
   // ######################### When Start Button Clicked ################################
   startQuizButton.addEventListener("click", setTime);
   startQuizButton.addEventListener("click", displayQuiz);
-
-
-
