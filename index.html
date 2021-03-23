@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Code Quiz - HW#4</title>
     <meta charset="UTF-8" />
@@ -20,6 +20,7 @@
       <div class= "cardTimer">
         <div class = "timerText">
             <h3>Seconds Remaining: <span class="secRemain">75</span></h3>
+        </div>
       </div>
     </header>
 
@@ -43,11 +44,13 @@
         </div>
         
         <!-- ############## Start Quiz Button ################ -->
-      </section>
+      
 
       <div>
         <button class="startQuizButton">Start Quiz</button>
       </div>
+
+    </section>
 
       <!-- #################### Question Page ###################### -->
       <!-- #################### Question Page ###################### -->
@@ -58,7 +61,7 @@
 
 
         <div>
-          <header class="Question" value="Ste">Hello</header>
+          <div class="Question" >Hello</div>
         </div><br>
         
         <div>
@@ -77,48 +80,68 @@
           <button  type="button" class="but4" name="button" value="show">H4llo</button>
         </div><br>
 
-         <!-- ############## Quiz Box Footer ################ -->
       </section>
+
+      <!-- ############## Quiz Box Footer ################ -->
       <section>
-        
+
         <div class="correctIncorrectBox">
           <span class="correct">Correct!</span>
           <span class="incorrect">Incorrect!</span>
         </div>
 
-        <div class="quizEndButtons">
-            <button class="takeQuizAgain">Take Quiz Again</button>
-            <button class="clearHighScores">Clear High Scores</button>
+      </section>
+
+      <!-- ################################ High Scores Page ######################## -->
+      <!-- ################################ High Scores Page ######################## -->
+      <!-- ################################ High Scores Page ######################## -->
+      <!-- ################################ High Scores Page ######################## -->
+        
+      <section class="highScoresPage">
+
+        <div>
+          <h2>HighScores</h2>
+          <span class="hsList">Display List of High Scores</span>
+          
+          <div>
+            <br>
+            <button class="playAgainButton"  type="button" class="butt" name="" value="show">Play Again</button>
+          </div>
+  
+          <div>
+            <button  type="button" class="b" name="hsButton" value="show">Clear Highscores</button>
+          </div><br>
+
         </div>
+         
 
       </section>
     
 
-
-
+      
       <!-- ################################ All Done Page ######################## -->
       <!-- ################################ All Done Page ######################## -->
       <!-- ################################ All Done Page ######################## -->
       <!-- ################################ All Done Page ######################## -->
 
-        <section class="allDonePage">
-          <div>
-            <h2>All Done!</h2>
-          </div>
-          <div>
-            <p>Your final score is: <span class = finalScoreCount>00</span></p>
-          </div>
-          <div>
-            <form>
-              <label>User Initials: </label>
-              <input type="text" class="userInitials">
-              <input type="submit" value="Submit"> <br>
-            </form>
-          </div>
-
-
-        </section>
-
+      
+      <section class="allDonePage">
+        <div>
+          <h2>All Done!</h2>
+        </div>
+        <div>
+          <p>Your final score is: <span class = finalScoreCount>00</span></p>
+        </div>
+        <div>
+          <form class="submitForm">
+            <label>User Initials: </label>
+            <input type="text" class="userInitials">
+            <input type="submit" value="Submit"> <br>
+          </form>
+        </div>
+      </section>
+      
+    
     
     </main>
     <script src="Assets/script.js"></script>

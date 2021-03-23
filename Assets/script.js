@@ -6,15 +6,10 @@ var startPage = document.querySelector(".startPage");
 var startQuizButton = document.querySelector(".startQuizButton");
 var quizMain = document.querySelector(".quizMain");
 var pageHeader = document.querySelector(".pageHeader");
-var correct = document.querySelector(".correct");
-var incorrect = document.querySelector(".incorrect");
-// var Radio = document.querySelector(".Radio");
-// var but1= document.querySelector(".but1");
-
 
 var secRemain = document.querySelector(".secRemain");
 
-var correctIncorrectBox = document.querySelector(".correctIncorrectBox");
+// var correctIncorrectBox = document.querySelector(".correctIncorrectBox");
 
 
 var quizEndButtons = document.querySelector(".quizEndButtons");
@@ -34,9 +29,19 @@ var option3 = document.querySelector(".but3");
 var option4 = document.querySelector(".but4");
 var correct = document.querySelector(".correct");
 var incorrect = document.querySelector(".incorrect");
+var button = document.getElementsByName("button");
+var buttonArr = Array.from(button);
+
+
+var allDonePage = document.querySelector(".allDonePage");
+var highScoresPage = document.querySelector(".highScoresPage");
+var hsList = document.querySelector(".hsList");
+var playAgainButton = document.querySelector(".playAgainButton");
+var submitForm = document.querySelector(".submitForm");
 
 
 
+// ################## Question Bank ##############################
 
 var questionBank = [
           {
@@ -72,7 +77,6 @@ var questionBank = [
 
 
 
-
 // ################## function to get question & answer set from array #############
 function printQuestion () {
   if (currentQuestion < 4) {
@@ -90,7 +94,7 @@ function printQuestion () {
 }
 
 
-// ######## functions to display correct/incorrect #########
+// ################### functions to display correct/incorrect ######################
 
 function dispCorrect () {
   correct.setAttribute("style", "display: block;");
@@ -99,19 +103,14 @@ function dispIncorrect () {
   incorrect.setAttribute("style", "display: block;");
 };
 
-// ########### function to move to the next array of questions/answers ##############
+// #################### function to move to the next array of questions/answers ####
 function currentQ() {
   currentQuestion++;
 }
 
 
 
-var button = document.getElementsByName("button");
-var buttonArr = Array.from(button);
-
-
-
-// ################## Checks Answer To See If Correct ##############
+// #################### Checks Answer To See If Correct ############################
 
 function checkAns (event) {
   // console.log(event.target);
@@ -137,8 +136,7 @@ function checkAns (event) {
       };
     };
 
-   
-
+   // #################### Initial Print Question & Click Activate ####################
 
   printQuestion();
 
@@ -146,47 +144,62 @@ function checkAns (event) {
     button.addEventListener("click", checkAns);
   })
 
- 
- 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-// ########### Removes Start Page, Displays Quiz, Hides Start Quiz Button ############
+  // ##### function to Removes Start Page, Displays Quiz, Hides Start Quiz Button #####
 function displayQuiz() {
   startPage.setAttribute("style", "display: none;");
-  // quizPage.setAttribute("style", "display: block;");
+  quizMain.setAttribute("style", "display: block;");
   startQuizButton.setAttribute("style", "visibility: hidden;");
 }
 
-var secLeft = 75;
 
-// ############## Starts Timer on Button Click #############
+
+function allDone() {
+  allDonePage.setAttribute("style", "display: block;");
+  quizMain.setAttribute("style", "display: none;");
+  console.log("HeyHey");
+}
+
+function highScores(event) {
+  console.log("HelloHelloHelloHello");
+  event.stopPropagation();
+
+  // highScoresPage.setAttribute("style", "display: block;");
+  // allDonePage.setAttribute("style", "display: none;");
+  // return;
+};
+
+function reStart(event) {
+  startPage.setAttribute("style", "display: block;");
+  startQuizButton.setAttribute("style", "display: block;");
+  highScoresPage.setAttribute("style", "display: none;");
+
+  }
+
+  playAgainButton.addEventListener("click", reStart);
+  submitForm.addEventListener("submit", highScores);
+
+
+
+
+
+
+  // ##################### Function to start timer on Button Click #####################
 function setTime(isDone) {
-  // var secLeft = 75;
+      var secLeft = 75;
       var timeInterval = setInterval(function () {
           secLeft--;
         secRemain.textContent = secLeft;
-        if(secLeft === 0) {
+        if(secLeft === 0 || currentQuestion > 3) {
           clearInterval(timeInterval);
-          secRemain.textContent= ("Time is Up!");
+          allDone();
+          // highScores();
         } 
-      }, 1000);}
+      }, 10);}
 
 
-
-// ############# When Start Button Clicked ##############
-startQuizButton.addEventListener("click", setTime);
-startQuizButton.addEventListener("click", displayQuiz);
+  // ######################### When Start Button Clicked ################################
+  startQuizButton.addEventListener("click", setTime);
+  startQuizButton.addEventListener("click", displayQuiz);
 
 
 

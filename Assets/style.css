@@ -30,12 +30,9 @@ header div {
 
 .quizMain {
     border: 1px solid black;
-    /* display: none; */
+    display: none;
 }
 
-/* .but1 {
-    visibility: hidden;
-} */
 
 .allDonePage {
     display: none;
@@ -51,6 +48,9 @@ header div {
     display: none;
 }
 
+.highScoresPage {
+    display: none;
+}
 
 .quizEndButtons {
     display: none;
