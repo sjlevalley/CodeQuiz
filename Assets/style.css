@@ -3,6 +3,11 @@
     display: flex;
 }
 
+header div {
+        display: flex;
+        align-items: center;
+}
+
 .viewHighScores {
     display: flex;
     color: red;
@@ -29,10 +34,24 @@ header div {
 
 .startPageHeader {
     border: 1px solid gray;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.pageHeader {
+    margin: auto;
 }
 
 .startPageInstructions {
-    border: 1px solid gray;
+        border: 1px solid gray;
+        display: flex;
+        justify-content: center
+}
+
+.buttonDiv {
+    display: flex;
+    justify-content: center;
 }
 
 .startQuiz {
@@ -41,26 +60,40 @@ header div {
 
 .quizMain {
     border: 1px solid black;
+    /* display: flex; */
+    flex-direction: column;
+    align-items: center;
     display: none;
 }
 
 
 .allDonePage {
     display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.correctIncorrectBox {
+        display: flex;
+        justify-content: center;
 }
 
 .correct {
     border: 1px solid black;
-    display: none;
+    /* display: flex; */
+    justify-content: center;
+    /* display: none; */
 }
 
 .incorrect {
     border: 1px solid black;
-    display: none;
+    /* display: none; */
 }
 
 .highScoresPage {
     display: none;
+    flex-direction: column;
+    align-items: center;
 }
 
 .quizEndButtons {

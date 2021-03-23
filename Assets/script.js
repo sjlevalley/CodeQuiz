@@ -100,10 +100,10 @@ function printQuestion () {
 // ################### functions to display correct/incorrect ######################
 
 function dispCorrect () {
-  correct.setAttribute("style", "display: block;");
+  correct.setAttribute("style", "display: flex;");
 };
 function dispIncorrect () {
-  incorrect.setAttribute("style", "display: block;");
+  incorrect.setAttribute("style", "display: flex;");
 };
 
 // #################### function to move to the next array of questions/answers ####
@@ -154,15 +154,16 @@ function displayQuiz() {
   currentQuestion = 0
   printQuestion();
   startPage.setAttribute("style", "display: none;");
-  quizMain.setAttribute("style", "display: block;");
+  quizMain.setAttribute("style", "display: flex;");
   startQuizButton.setAttribute("style", "visibility: hidden;");
 }
 
 
 
 function allDone() {
-  allDonePage.setAttribute("style", "display: block;");
+  allDonePage.setAttribute("style", "display: flex;");
   quizMain.setAttribute("style", "display: none;");
+  correct.setAttribute("style", "display: none;");
   finalScoreCount.textContent = secRemain.textContent;
   // console.log("HeyHey");
 }
@@ -170,7 +171,7 @@ function allDone() {
 function highScores(event) {
   // console.log("HelloHelloHelloHello");
   event.preventDefault();
-  highScoresPage.setAttribute("style", "display: block;");
+  highScoresPage.setAttribute("style", "display: flex;");
   allDonePage.setAttribute("style", "display: none;");
   return;
 };
@@ -211,7 +212,7 @@ function setTime(isDone) {
           allDone();
           // highScores();
         } 
-      }, 1000);}
+      }, 10);}
 
 
 
