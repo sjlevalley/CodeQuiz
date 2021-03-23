@@ -1,4 +1,6 @@
 
+
+// ###################### Global Variables ########################
 var header = document.querySelector(".header");
 var startPage = document.querySelector(".startPage");
 var startQuizButton = document.querySelector(".startQuizButton");
@@ -6,16 +8,15 @@ var quizMain = document.querySelector(".quizMain");
 var pageHeader = document.querySelector(".pageHeader");
 var correct = document.querySelector(".correct");
 var incorrect = document.querySelector(".incorrect");
-var Radio = document.querySelector(".Radio");
-var but1= document.querySelector(".but1");
+// var Radio = document.querySelector(".Radio");
+// var but1= document.querySelector(".but1");
 
 
 var secRemain = document.querySelector(".secRemain");
 
 var correctIncorrectBox = document.querySelector(".correctIncorrectBox");
 
-var correct = document.querySelector(".correct");
-var incorrect = document.querySelector(".incorrect");
+
 var quizEndButtons = document.querySelector(".quizEndButtons");
 var takeQuizAgain = document.querySelector(".takeQuizAgain");
 var clearHighScores = document.querySelector(".clearHighScores");
@@ -23,6 +24,16 @@ var clearHighScores = document.querySelector(".clearHighScores");
 var isDone = false;
 var finalScoreCount = document.querySelector(".finalScoreCount");
 var userInitials = document.querySelector(".userInitials");
+
+
+var currentQuestion = 0;
+var Question = document.querySelector(".Question");
+var option1 = document.querySelector(".but1");
+var option2 = document.querySelector(".but2");
+var option3 = document.querySelector(".but3");
+var option4 = document.querySelector(".but4");
+var correct = document.querySelector(".correct");
+var incorrect = document.querySelector(".incorrect");
 
 
 
@@ -59,17 +70,15 @@ var questionBank = [
           }
 ];
 
-var currentQuestion = 0;
 
-var Question = document.querySelector(".Question");
-var option1 = document.querySelector(".but1");
-var option2 = document.querySelector(".but2");
-var option3 = document.querySelector(".but3");
-var option4 = document.querySelector(".but4");
 
+
+// ################## function to get question & answer set from array #############
 function printQuestion () {
   if (currentQuestion < 4) {
     var Q = questionBank[currentQuestion];
+    correct.setAttribute("style", "display: none;");
+    incorrect.setAttribute("style", "display: none;");
     Question.textContent = Q.question;
     option1.textContent = Q.answer1;
     option2.textContent = Q.answer2;
@@ -78,21 +87,31 @@ function printQuestion () {
   } else {
     window.alert("That's All the Questions");
   }
-
-
 }
 
+
+// ######## functions to display correct/incorrect #########
+
+function dispCorrect () {
+  correct.setAttribute("style", "display: block;");
+};
+function dispIncorrect () {
+  incorrect.setAttribute("style", "display: block;");
+};
+
+// ########### function to move to the next array of questions/answers ##############
+function currentQ() {
+  currentQuestion++;
+}
 
 
 
 var button = document.getElementsByName("button");
 var buttonArr = Array.from(button);
 
-// console.log(buttonArr);
-
-// printQuestion();
 
 
+// ################## Checks Answer To See If Correct ##############
 
 function checkAns (event) {
   // console.log(event.target);
@@ -101,27 +120,27 @@ function checkAns (event) {
       var target = event.target;
       if (target.textContent === questionBank[currentQuestion].correctA) {
         // console.log(target.textContent);
-        window.alert("Correct!!!");
-        currentQuestion++;
-        printQuestion();
+        correct.setAttribute("style", "display: block;");
+        setTimeout(function(){
+          currentQ();}, 1000);
+        setTimeout(function(){
+          printQuestion();}, 1000);
         return;
-
       } else {
-
         secLeft -= 15;
-
-
-        // window.alert("WRONG!!!");
-        currentQuestion++;
-        printQuestion();
+        incorrect.setAttribute("style", "display: block;");
+        setTimeout(function(){
+          currentQ();}, 1000);
+        setTimeout(function(){
+          printQuestion();}, 1000);
         return;
       };
     };
 
-    // };
+   
 
 
-    printQuestion();
+  printQuestion();
 
   buttonArr.forEach(function(button){
     button.addEventListener("click", checkAns);
