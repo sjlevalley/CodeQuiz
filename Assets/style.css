@@ -1,9 +1,23 @@
 .header {
     border: 2px solid black;
+    display: flex;
 }
+
+.viewHighScores {
+    display: flex;
+    color: red;
+    
+    
+};
 
 header div {
     border: 1px solid gray;
+    display: flex;
+}
+
+.cardTimer {
+    display: flex;
+    margin-left: auto;
 }
 
 
