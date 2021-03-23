@@ -9,16 +9,19 @@ var pageHeader = document.querySelector(".pageHeader");
 
 var secRemain = document.querySelector(".secRemain");
 
+
+
 // var correctIncorrectBox = document.querySelector(".correctIncorrectBox");
 
 
 var quizEndButtons = document.querySelector(".quizEndButtons");
 var takeQuizAgain = document.querySelector(".takeQuizAgain");
-var clearHighScores = document.querySelector(".clearHighScores");
 
+var clearHighScores = document.querySelector(".clearHighScores");
+var highScoresButton = document.querySelector(".highScoresButton");
 var isDone = false;
 var finalScoreCount = document.querySelector(".finalScoreCount");
-var userInitials = document.querySelector(".userInitials");
+var userInitials = document.querySelector(".userInitials").textContent;
 
 
 var currentQuestion = 0;
@@ -74,6 +77,39 @@ var questionBank = [
             correctA: "Sunny"
           }
 ];
+
+
+users = localStorage.getItem("users");
+
+highScoresButton.addEventListener("click", function (event) {
+  event.preventDefault();
+
+var users = {
+  Initials: userInitials.textContent, Score: finalScoreCount.textContent
+};
+
+localStorage.setItem("users", JSON.stringify(userInitials.textContent),
+JSON.stringify(finalScoreCount.textContent));
+printScores();
+});
+
+function printScores() {
+  // convert JSON string back into a plain javascript object with JSON.parse()
+  var lastScore = JSON.parse(localStorage.getItem("users"));
+  if (lastScore !== null) {
+    document.querySelector(".hs1").textContent =
+      lastGrade.student + " received a/an " + lastGrade.grade;
+
+  }
+};
+
+
+
+// highScoresButton.addEventListener("click", function(event) {
+//   if
+// } )
+
+
 
 
 
@@ -157,15 +193,15 @@ function allDone() {
   allDonePage.setAttribute("style", "display: block;");
   quizMain.setAttribute("style", "display: none;");
   console.log("HeyHey");
+
 }
 
-function highScores(event) {
+function highScores(event) { 
   console.log("HelloHelloHelloHello");
-  event.stopPropagation();
-
-  // highScoresPage.setAttribute("style", "display: block;");
-  // allDonePage.setAttribute("style", "display: none;");
-  // return;
+  event.preventDefault();
+  highScoresPage.setAttribute("style", "display: block;");
+  allDonePage.setAttribute("style", "display: none;");
+  return;
 };
 
 function reStart(event) {
@@ -191,10 +227,11 @@ function setTime(isDone) {
         secRemain.textContent = secLeft;
         if(secLeft === 0 || currentQuestion > 3) {
           clearInterval(timeInterval);
+          finalScoreCount.textContent = secLeft;
           allDone();
           // highScores();
         } 
-      }, 10);}
+      }, 1000);}
 
 
   // ######################### When Start Button Clicked ################################
