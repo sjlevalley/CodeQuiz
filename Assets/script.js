@@ -108,7 +108,7 @@ function currentQ() {
   currentQuestion++;
 }
 
-
+renderLastRegistered();
 
 // #################### Checks Answer To See If Correct ############################
 
@@ -159,11 +159,11 @@ function allDone() {
   allDonePage.setAttribute("style", "display: block;");
   quizMain.setAttribute("style", "display: none;");
   finalScoreCount.textContent = secRemain.textContent;
-  console.log("HeyHey");
+  // console.log("HeyHey");
 }
 
 function highScores(event) {
-  console.log("HelloHelloHelloHello");
+  // console.log("HelloHelloHelloHello");
   event.preventDefault();
   highScoresPage.setAttribute("style", "display: block;");
   allDonePage.setAttribute("style", "display: none;");
@@ -180,6 +180,10 @@ function reStart(event) {
   startPage.setAttribute("style", "display: block;");
   startQuizButton.setAttribute("style", "display: block;");
   highScoresPage.setAttribute("style", "display: none;");
+  correct.setAttribute("style", "display: none;");
+  incorrect.setAttribute("style", "display: none;");
+  currentQuestion = 0;
+  secLeft = 75;
 
   }
 
@@ -204,26 +208,7 @@ function setTime(isDone) {
         } 
       }, 1000);}
 
-// var todos = [];
 
-
-// function renderTodos() {
-//   // Clear todoList element and update todoCountSpan
-//     // Render a new li for each todo
-//   for (var i = 0; i < todos.length; i++) {
-//     var todo = todos[i];
-
-//     var li = document.createElement("li");
-//     li.textContent = todo;
-//     li.setAttribute("data-index", i);
-
-//     var button = document.createElement("button");
-//     button.textContent = "Complete ✔️";
-
-//     li.appendChild(button);
-//     todoList.appendChild(li);
-//   }
-// }
 
   
 
@@ -231,9 +216,36 @@ function setTime(isDone) {
   startQuizButton.addEventListener("click", setTime);
   startQuizButton.addEventListener("click", displayQuiz);
 
-  // submitForm.addEventListener("click", function(event){
-  //   console.log("SUBMIT!");
-  //   localStorage.setItem("Initials", );
-  // });
+  submitForm.addEventListener("submit", function(event){
+    // preventDefault();
 
-  // localStorage.setItem("Initials", 74);
+    console.log("SUBMIT!");
+
+    var initials = document.querySelector(".userInitials").value;
+    var score = finalScoreCount.textContent;
+  
+    var info = [initials, score];
+      // save email and password in local storage
+    localStorage.setItem("info", info);
+      // localStorage.setItem("initials", initials);
+      // localStorage.setItem("score", score);
+  });
+
+
+function renderLastRegistered() {
+  // get email and password from local storage
+  var info = localStorage.getItem("info");
+  // var initials = info[0];
+  // var score = info[1];
+
+  // if email or password is null, stop
+  if (!info) {
+    return;
+  } else {
+  var initials = info[0];
+  var score = info[1];
+    console.log(info);
+  }}
+
+  renderLastRegistered();
+
