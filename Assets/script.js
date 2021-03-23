@@ -114,7 +114,7 @@ function currentQ() {
 
 function checkAns (event) {
       
-      secLeft = secRemain.textContent - 15;
+      
       var target = event.target;
       if (target.textContent === questionBank[currentQuestion].correctA) {
         // console.log(target.textContent);
@@ -122,18 +122,18 @@ function checkAns (event) {
         setTimeout(function(){
           currentQ();}, 1000);
         setTimeout(function(){
-          secLeft-= 15;
+          
           printQuestion();}, 1000);
         return;
       } else {
-        console.log("INCORRECT");
-        dispIncorrect();
         secLeft-= 15;
+        // console.log("INCORRECT");
+        dispIncorrect();
         setTimeout(function(){
           currentQ();}, 1000);
-
         setTimeout(function(){
           printQuestion();}, 1000);
+          
         return;
       };
     };
@@ -188,12 +188,12 @@ function reStart(event) {
 
 
 
-
+  var secLeft = 75;
 
 
   // ##################### Function to start timer on Button Click #####################
 function setTime(isDone) {
-      var secLeft = 75;
+      // var secLeft = 75;
       var timeInterval = setInterval(function () {
           secLeft--;
         secRemain.textContent = secLeft;
@@ -204,7 +204,36 @@ function setTime(isDone) {
         } 
       }, 1000);}
 
+// var todos = [];
+
+
+// function renderTodos() {
+//   // Clear todoList element and update todoCountSpan
+//     // Render a new li for each todo
+//   for (var i = 0; i < todos.length; i++) {
+//     var todo = todos[i];
+
+//     var li = document.createElement("li");
+//     li.textContent = todo;
+//     li.setAttribute("data-index", i);
+
+//     var button = document.createElement("button");
+//     button.textContent = "Complete ✔️";
+
+//     li.appendChild(button);
+//     todoList.appendChild(li);
+//   }
+// }
+
+  
 
   // ######################### When Start Button Clicked ################################
   startQuizButton.addEventListener("click", setTime);
   startQuizButton.addEventListener("click", displayQuiz);
+
+  // submitForm.addEventListener("click", function(event){
+  //   console.log("SUBMIT!");
+  //   localStorage.setItem("Initials", );
+  // });
+
+  // localStorage.setItem("Initials", 74);
