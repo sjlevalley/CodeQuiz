@@ -214,14 +214,55 @@ function setTime(isDone) {
         } 
       }, 10);}
 
+var storedInfo = JSON.parse(localStorage.getItem("Info"));
+console.log(storedInfo);
 
 
-  
 
   // ######################### When Start Button Clicked ################################
   startQuizButton.addEventListener("click", setTime);
   startQuizButton.addEventListener("click", displayQuiz);
 
   submitForm.addEventListener("submit", function(event){
-    // preventDefault();
+
+    var myData = {
+      initials: userInitials.value,
+      score: finalScoreCount.textContent
+    }
+  
+    var Data = JSON.stringify(myData);
+    localStorage.setItem("Data", Data);
+
+
+
+
+
+    
+    // // ##### takes answers, converts them to string, stores them in 
+    // // myObj array
+    // myObjString = (JSON.stringify(myData));
+    // localStorage.setItem("myObjString", myObjString)
+    // console.log(localStorage);
+
+    // var myObjParse = JSON.parse(localStorage.getItem("myObjString"));
+    // console.log(myObjParse);
+
+
+
+    // var myObjParse = JSON.parse()
   });
+
+
+
+
+
+
+
+
+
+  var myObj = {
+    Initials: userInitials,
+    score: finalScoreCount.textContent
+  }
+
+  
