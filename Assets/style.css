@@ -133,6 +133,10 @@ header div {
     background-color: beige;
 }
 
+.newHighScoresList {
+    list-style-type: none;
+}
+
 
 
 .correctIncorrectBox {

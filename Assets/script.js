@@ -44,33 +44,33 @@ var submitForm = document.querySelector(".submitForm");
 
 var questionBank = [
           {
-            question: "What did you have for dinner?", 
-            answer1: "Steak",
-            answer2: "Pizza",
-            answer3: "Fries",
-            answer4: "Cake",
-            correctA: "Steak"
+            question: "What is 256 x 256?", 
+            answer1: "79216",
+            answer2: "56756",
+            answer3: "65536",
+            answer4: "46042",
+            correctA: "65536"
           },{ 
-            question: "Where did you sleep?",
-            answer1: "Home",
-            answer2: "Park",
-            answer3: "Car",
-            answer4: "Train",
-            correctA: "Home"
+            question: "What is a pirate's favorite letter?",
+            answer1: "R",
+            answer2: "C",
+            answer3: "O",
+            answer4: "F",
+            correctA: "C"
           },{ 
-            question: "How do you feel?",
-            answer1: "Good",
-            answer2: "Bad",
-            answer3: "Ugly",
-            answer4: "Super Ugly",
-            correctA: "Bad"
+            question: "Which animal is the largest?",
+            answer1: "Dog",
+            answer2: "Cat",
+            answer3: "Bird",
+            answer4: "Elephant",
+            correctA: "Elephant"
           },{ 
-            question: "What is the weather?",
-            answer1: "Sunny",
-            answer2: "Cloudy",
-            answer3: "Rainy",
-            answer4: "Overcast",
-            correctA: "Sunny"
+            question: "On which continent is the major city of Brisbane?",
+            answer1: "North America",
+            answer2: "Australia",
+            answer3: "South America",
+            answer4: "Asia",
+            correctA: "Australia"
           }
 ];
 
@@ -148,6 +148,7 @@ function checkAns (event) {
   // ##### function to Removes Start Page, Displays Quiz, Hides Start Quiz Button #####
 
 function displayQuiz() {
+  
   currentQuestion = 0
   printQuestion();
   startPage.setAttribute("style", "display: none;");
@@ -171,6 +172,7 @@ function highScores(event) {
   event.preventDefault();
   highScoresPage.setAttribute("style", "display: flex;");
   allDonePage.setAttribute("style", "display: none;");
+  
   return;
 };
 
@@ -229,7 +231,7 @@ function highScoreCount() {
   
    
     var li = document.createElement("li");
-    li.textContent = finalScoreCount.textContent + " - " + userInitials.value;
+    li.textContent = finalScoreCount.textContent + "  " + userInitials.value;
 
     newHighScoresList.appendChild(li);
   }
@@ -249,6 +251,8 @@ highScoreCount();
 
 });
 
+var storedScores = JSON.parse(localStorage.getItem("Scores"));
+
 function init() {
   // Get stored todos from localStorage
   var storedScores = JSON.parse(localStorage.getItem("Scores"));
@@ -261,7 +265,9 @@ function init() {
   // This is a helper function that will render todos to the DOM
   highScoreCount();
 }
+
 init();
+console.log(storedScores);
 
 
 
