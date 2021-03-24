@@ -218,7 +218,7 @@ function setTime(isDone) {
 
 
 
-var ScoreArray = [];
+
 var player = document.querySelector(".player");
 newHighScoresList = document.querySelector(".newHighScoresList");
 var highSc1
@@ -235,7 +235,7 @@ function highScoreCount() {
 
     newHighScoresList.appendChild(li);
   }
-
+  var ScoreArray = [];
 
 function storeScores() {
   localStorage.setItem("Scores", JSON.stringify(ScoreArray));
