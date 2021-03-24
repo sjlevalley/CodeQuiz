@@ -40,10 +40,6 @@ var score1 =  document.querySelector(".score1");
 var playAgainButton = document.querySelector(".playAgainButton");
 var submitForm = document.querySelector(".submitForm");
 
-
-
-
-
 // ################## Question Bank ##############################
 
 var questionBank = [
@@ -81,6 +77,7 @@ var questionBank = [
 
 
 // ################## function to get question & answer set from array #############
+
 function printQuestion () {
   if (currentQuestion < 4) {
     var Q = questionBank[currentQuestion];
@@ -92,7 +89,7 @@ function printQuestion () {
     option3.textContent = Q.answer3;
     option4.textContent = Q.answer4; 
   } else {
-    // window.alert("That's All the Questions");
+    
   }
 }
 
@@ -107,11 +104,10 @@ function dispIncorrect () {
 };
 
 // #################### function to move to the next array of questions/answers ####
+
 function currentQ() {
   currentQuestion++;
 }
-
-
 
 // #################### Checks Answer To See If Correct ############################
 
@@ -120,22 +116,22 @@ function checkAns (event) {
       
       var target = event.target;
       if (target.textContent === questionBank[currentQuestion].correctA) {
-        // console.log(target.textContent);
+        
         dispCorrect();
         setTimeout(function(){
-          currentQ();}, 1000);
+          currentQ();}, 500);
         setTimeout(function(){
           
-          printQuestion();}, 1000);
+          printQuestion();}, 500);
         return;
       } else {
         secLeft-= 15;
-        // console.log("INCORRECT");
+        
         dispIncorrect();
         setTimeout(function(){
-          currentQ();}, 1000);
+          currentQ();}, 500);
         setTimeout(function(){
-          printQuestion();}, 1000);
+          printQuestion();}, 500);
           
         return;
       };
@@ -150,6 +146,7 @@ function checkAns (event) {
   })
 
   // ##### function to Removes Start Page, Displays Quiz, Hides Start Quiz Button #####
+
 function displayQuiz() {
   currentQuestion = 0
   printQuestion();
@@ -159,27 +156,23 @@ function displayQuiz() {
 }
 
 
+// ################################## Shows All Done Page ######################
 
 function allDone() {
   allDonePage.setAttribute("style", "display: flex;");
   quizMain.setAttribute("style", "display: none;");
   correct.setAttribute("style", "display: none;");
+  incorrect.setAttribute("style", "display: none;");
   finalScoreCount.textContent = secRemain.textContent;
-  // console.log("HeyHey");
+ 
 }
 
 function highScores(event) {
-  // console.log("HelloHelloHelloHello");
   event.preventDefault();
   highScoresPage.setAttribute("style", "display: flex;");
   allDonePage.setAttribute("style", "display: none;");
   return;
 };
-
-
-  // highScoresPage.setAttribute("style", "display: block;");
-  // allDonePage.setAttribute("style", "display: none;");
-  // return;
 
 
 function reStart(event) {
@@ -201,7 +194,8 @@ function reStart(event) {
   var secLeft = 75;
 
 
-  // ##################### Function to start timer on Button Click #####################
+  // ##################### Function to start timer on Button Click ###################
+
 function setTime(isDone) {
       // var secLeft = 75;
       var timeInterval = setInterval(function () {
@@ -215,43 +209,11 @@ function setTime(isDone) {
       }, 1000);}
 
 
+  // ######################### When Start Button Clicked #############################
 
-var storedInfo = JSON.parse(localStorage.getItem("myData"));
-console.log(storedInfo);
-
-
-
-
-
-
-  // ######################### When Start Button Clicked ################################
   startQuizButton.addEventListener("click", setTime);
   startQuizButton.addEventListener("click", displayQuiz);
 
-  submitForm.addEventListener("submit", function(event){
-
-    var myData = {
-      initials: userInitials.value,
-      score: finalScoreCount.textContent
-    }
-
-    localStorage.setItem('myData', JSON.stringify(myData));
-    // score1.textContent = myData.initials + " - " + myData.score;
-    console.log(localStorage);
-
-    
-
-
-
-
-
-
-
-
-
-    
-
-  });
 
 
 var ScoreArray = [];
@@ -259,32 +221,19 @@ var player = document.querySelector(".player");
 newHighScoresList = document.querySelector(".newHighScoresList");
 var highSc1
 
-// init();
+
 
   // The following function renders items in a todo list as <li> elements
 function highScoreCount() {
   // Clear todoList element and update todoCountSpan
   
-  
-
-  // Render a new li for each todo
-  // for (var i = 0; i < 4; i++) {
-  //   finalScoreCount.textContent = ScoreArray[i];
-
-
    
     var li = document.createElement("li");
     li.textContent = finalScoreCount.textContent + " - " + userInitials.value;
-    // li.setAttribute("data-index", i);
-
-    
-    // player.textContent = userInitials.value;
 
     newHighScoresList.appendChild(li);
   }
-// };
 
-// highScoreCount();
 
 function storeScores() {
   localStorage.setItem("Scores", JSON.stringify(ScoreArray));

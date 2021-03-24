@@ -1,29 +1,29 @@
 .header {
     border: 2px solid black;
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 header div {
         display: flex;
+        justify-content: center;
         align-items: center;
-}
-
-.viewHighScores {
-    display: flex;
-    color: red;
-    
-    
-};
-
-header div {
-    border: 1px solid gray;
-    display: flex;
 }
 
 .cardTimer {
     display: flex;
-    margin-left: auto;
+    justify-content: center;
+    align-items: center;
+    
 }
+
+.timerText {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: auto;
+};
 
 
 
@@ -46,12 +46,20 @@ header div {
 .startPageInstructions {
         border: 1px solid gray;
         display: flex;
+        align-items: center;
         justify-content: center
+}
+
+. instText {
+    padding: 25px;
+    text-align: center;
+
 }
 
 .buttonDiv {
     display: flex;
     justify-content: center;
+    
 }
 
 .startQuiz {
