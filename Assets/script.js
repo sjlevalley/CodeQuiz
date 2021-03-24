@@ -253,21 +253,26 @@ highScoreCount();
 
 var storedScores = JSON.parse(localStorage.getItem("Scores"));
 
+
 function init() {
   // Get stored todos from localStorage
   var storedScores = JSON.parse(localStorage.getItem("Scores"));
+  console.log(storeScores);
+  
+  }
 
   // If todos were retrieved from localStorage, update the todos array to it
   if (storedScores !== null) {
     ScoreArray = storedScores;
-  }
+    
+  } 
 
   // This is a helper function that will render todos to the DOM
   highScoreCount();
-}
+
 
 init();
-console.log(storedScores);
+
 
 
 
