@@ -40,7 +40,7 @@ var score1 =  document.querySelector(".score1");
 var playAgainButton = document.querySelector(".playAgainButton");
 var submitForm = document.querySelector(".submitForm");
 
-console.log(score1.textContent);
+
 
 
 
@@ -212,7 +212,7 @@ function setTime(isDone) {
           allDone();
           // highScores();
         } 
-      }, 500);}
+      }, 10);}
 
 
 
@@ -236,7 +236,7 @@ console.log(storedInfo);
     }
 
     localStorage.setItem('myData', JSON.stringify(myData));
-    score1.textContent = myData.initials + " - " + myData.score;
+    // score1.textContent = myData.initials + " - " + myData.score;
     console.log(localStorage);
 
     
@@ -271,6 +271,8 @@ function highScoreCount() {
   // for (var i = 0; i < 4; i++) {
   //   finalScoreCount.textContent = ScoreArray[i];
 
+
+   
     var li = document.createElement("li");
     li.textContent = finalScoreCount.textContent + " - " + userInitials.value;
     // li.setAttribute("data-index", i);
