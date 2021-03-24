@@ -212,7 +212,7 @@ function setTime(isDone) {
           allDone();
           // highScores();
         } 
-      }, 10);}
+      }, 1000);}
 
 
 
