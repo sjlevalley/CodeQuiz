@@ -40,7 +40,7 @@ var score1 =  document.querySelector(".score1");
 var playAgainButton = document.querySelector(".playAgainButton");
 var submitForm = document.querySelector(".submitForm");
 
-console.log(score1);
+console.log(score1.textContent);
 
 
 
@@ -212,10 +212,15 @@ function setTime(isDone) {
           allDone();
           // highScores();
         } 
-      }, 10);}
+      }, 500);}
 
-var storedInfo = JSON.parse(localStorage.getItem("Info"));
+
+
+var storedInfo = JSON.parse(localStorage.getItem("myData"));
 console.log(storedInfo);
+
+
+
 
 
 
@@ -229,40 +234,87 @@ console.log(storedInfo);
       initials: userInitials.value,
       score: finalScoreCount.textContent
     }
-  
-    var Data = JSON.stringify(myData);
-    localStorage.setItem("Data", Data);
+
+    localStorage.setItem('myData', JSON.stringify(myData));
+    score1.textContent = myData.initials + " - " + myData.score;
+    console.log(localStorage);
+
+    
+
+
+
+
 
 
 
 
 
     
-    // // ##### takes answers, converts them to string, stores them in 
-    // // myObj array
-    // myObjString = (JSON.stringify(myData));
-    // localStorage.setItem("myObjString", myObjString)
-    // console.log(localStorage);
 
-    // var myObjParse = JSON.parse(localStorage.getItem("myObjString"));
-    // console.log(myObjParse);
-
-
-
-    // var myObjParse = JSON.parse()
   });
 
 
+var ScoreArray = [];
+var player = document.querySelector(".player");
+newHighScoresList = document.querySelector(".newHighScoresList");
+var highSc1
 
+// init();
 
+  // The following function renders items in a todo list as <li> elements
+function highScoreCount() {
+  // Clear todoList element and update todoCountSpan
+  
+  
 
+  // Render a new li for each todo
+  // for (var i = 0; i < 4; i++) {
+  //   finalScoreCount.textContent = ScoreArray[i];
 
+    var li = document.createElement("li");
+    li.textContent = finalScoreCount.textContent + " - " + userInitials.value;
+    // li.setAttribute("data-index", i);
 
+    
+    // player.textContent = userInitials.value;
 
-
-  var myObj = {
-    Initials: userInitials,
-    score: finalScoreCount.textContent
+    newHighScoresList.appendChild(li);
   }
+// };
+
+// highScoreCount();
+
+function storeScores() {
+  localStorage.setItem("Scores", JSON.stringify(ScoreArray));
+}
+
+submitForm.addEventListener("submit", function(event){
+  event.preventDefault();
 
   
+ScoreArray.push(finalScoreCount.textContent);
+storeScores();
+highScoreCount();
+
+});
+
+function init() {
+  // Get stored todos from localStorage
+  var storedScores = JSON.parse(localStorage.getItem("Scores"));
+
+  // If todos were retrieved from localStorage, update the todos array to it
+  if (storedScores !== null) {
+    ScoreArray = storedScores;
+  }
+
+  // This is a helper function that will render todos to the DOM
+  highScoreCount();
+}
+init();
+
+
+
+
+
+
+
