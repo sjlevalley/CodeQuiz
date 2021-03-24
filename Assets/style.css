@@ -1,8 +1,12 @@
 .header {
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
+    height: 100px;
+    background-color: darkgray;
     justify-content: center;
     align-items: center;
+    font-size: 32px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 
 header div {
@@ -15,6 +19,7 @@ header div {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100px;
     
 }
 
@@ -28,58 +33,107 @@ header div {
 
 
 .startPage {
-    border: 1px solid gray;
+    /* border: 1px solid gray; */
     display: block;
 }
 
-.startPageHeader {
-    border: 1px solid gray;
+.startPageHeader h2 {
+    /* border: 1px solid gray; */
     margin: auto;
+    background-color: darkgray;
+    
+    height: 150px;
     display: flex;
     justify-content: center;
 }
 
 .pageHeader {
     margin: auto;
+    display: flex;
+    font-size: 24px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+
 }
 
 .startPageInstructions {
-        border: 1px solid gray;
+        
+        background-color: beige;
         display: flex;
         align-items: center;
         justify-content: center
 }
 
-. instText {
+.instText {
     padding: 25px;
     text-align: center;
-
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 18px;
 }
 
 .buttonDiv {
     display: flex;
     justify-content: center;
-    
+    height: 75px;
+    padding: 25px;
+    background-color: darkgray;
 }
 
 .startQuiz {
     border: 1px solid gray;
+    background-color: darkgray;
+}
+
+.startQuizButton {
+    width: 25%;
+    border-radius: 10px;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .quizMain {
     border: 1px solid black;
+    background-color: beige;
+    padding: 25px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     /* display: flex; */
     flex-direction: column;
     align-items: center;
     display: none;
 }
 
+.Question {
+    width: 400px;
+    height: 50px;
+    text-align: center;
+    font-size: 24px;
+}
+
+.but1, .but2, .but3, .but4, .playAgainButton, .subBut {
+    height: 50px;
+    width: 150px;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-radius: 5px;
+}
+
 
 .allDonePage {
     display: none;
+    
     flex-direction: column;
     align-items: center;
+    height: 200px;
 }
+
+.title, .finalScore {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 25px;
+    width: 100%;
+    text-align: center;
+    background-color: beige;
+}
+
+
 
 .correctIncorrectBox {
         display: flex;
@@ -88,7 +142,7 @@ header div {
 
 .correct {
     border: 1px solid black;
-    /* display: flex; */
+    display: flex;
     justify-content: center;
     /* display: none; */
 }
@@ -101,6 +155,9 @@ header div {
 .highScoresPage {
     display: none;
     flex-direction: column;
+    background-color: beige;
+    font-size: 24px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     align-items: center;
 }
 
